@@ -28,7 +28,7 @@ export function NavLink({
       target={external ? "_blank" : ""}
     >
       <Image src={iconpath} alt={title || ""} width={size} height={size} />
-      <p className="text-slate-400">{title}</p>
+      <p className="text-slate-400 font-mono text-sm">{title}</p>
     </Link>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { NavLink } from "@/components/NavLink";
+import { NavLink } from "@/components";
 import Image from "next/image";
 
 export function Header() {
@@ -13,32 +13,32 @@ export function Header() {
   };
 
   return (
-    <header className="flex flex-col justify-between bg-gray-950 h-screen w-20">
+    <header className="float-left fixed flex flex-col justify-between bg-gray-950 h-screen w-20">
       <NavLink
         className="bg-slate-800"
         href="/"
-        iconpath="/save.svg"
+        iconpath="/icons/save.svg"
         size={40}
       />
       <nav>
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/coffee.svg"
+          iconpath="/icons/coffee.svg"
           size={35}
           hover
         />
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/coffee.svg"
+          iconpath="/icons/coffee.svg"
           size={35}
           hover
         />
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/coffee.svg"
+          iconpath="/icons/coffee.svg"
           size={35}
           hover
         />
@@ -46,13 +46,13 @@ export function Header() {
       <div className="flex flex-col items-center content-center my-4">
         <NavLink
           href="https://github.com/ArthurMTS"
-          iconpath="/github.svg"
+          iconpath="/icons/github.svg"
           size={20}
           external
         />
         <Image
           className="cursor-pointer bg-slate-900 p-1 transition-colors rounded-lg hover:bg-slate-800"
-          src={theme === "dark" ? "/sun.svg" : "/moon.svg"}
+          src={theme === "dark" ? "/icons/sun.svg" : "/icons/moon.svg"}
           alt="theme toggle"
           width={25}
           height={25}
