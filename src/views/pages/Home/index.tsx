@@ -1,6 +1,6 @@
 import { Header, GameCard } from "@/components";
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <Header />

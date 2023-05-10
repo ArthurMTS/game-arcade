@@ -1,8 +1,11 @@
-"use client";
 import React from "react";
 
 import { NavLink } from "@/components";
-import Image from "next/image";
+import SaveIcon from "@/assets/icons/save.svg";
+import CoffeeIcon from "@/assets/icons/coffee.svg";
+import GithubIcon from "@/assets/icons/github.svg";
+import SunIcon from "@/assets/icons/sun.svg";
+import MoonIcon from "@/assets/icons/moon.svg";
 
 export function Header() {
   const [theme, setTheme] = React.useState<"dark" | "light">("dark");
@@ -17,28 +20,28 @@ export function Header() {
       <NavLink
         className="bg-slate-800"
         href="/"
-        iconpath="/icons/save.svg"
+        iconpath={SaveIcon}
         size={40}
       />
       <nav>
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/icons/coffee.svg"
+          iconpath={CoffeeIcon}
           size={35}
           hover
         />
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/icons/coffee.svg"
+          iconpath={CoffeeIcon}
           size={35}
           hover
         />
         <NavLink
           title="Coffee"
           href="#"
-          iconpath="/icons/coffee.svg"
+          iconpath={CoffeeIcon}
           size={35}
           hover
         />
@@ -46,13 +49,13 @@ export function Header() {
       <div className="flex flex-col items-center content-center my-4">
         <NavLink
           href="https://github.com/ArthurMTS"
-          iconpath="/icons/github.svg"
+          iconpath={GithubIcon}
           size={20}
           external
         />
-        <Image
+        <img
           className="cursor-pointer bg-slate-900 p-1 transition-colors rounded-lg hover:bg-slate-800"
-          src={theme === "dark" ? "/icons/sun.svg" : "/icons/moon.svg"}
+          src={theme === "dark" ? SunIcon : MoonIcon}
           alt="theme toggle"
           width={25}
           height={25}
