@@ -24,7 +24,9 @@ export function NavLink({
   return (
     <Link
       to={href}
-      className={`p-4 flex flex-col gap-2 items-center justify-center ${className} ${hover ? styles.hover : ""}`}
+      className={`p-4 flex flex-col gap-2 items-center justify-center ${className} ${
+        hover ? styles.hover : ""
+      }`}
       target={external ? "_blank" : ""}
     >
       <img src={iconpath} alt={title || ""} width={size} height={size} />

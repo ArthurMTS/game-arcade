@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Header, Main } from "@/components";
-import FlagIcon from "@/assets/icons/flag.svg";
+import { Header, Main, SurrenderFlag } from "@/components";
 import { PageRoutes } from "@/views";
 
 export function Snake() {
+  const [gameOver, setGameOver] = React.useState(false);
   const navigate = useNavigate();
   const blockSize = 25;
   const rows = 20;
   const cols = 20;
   let context: CanvasRenderingContext2D;
   let board: HTMLCanvasElement;
-  let gameOver = false;
 
   // snake head
   let snakeX = blockSize * 5;
@@ -21,7 +20,7 @@ export function Snake() {
   let velocityX = 0;
   let velocityY = 0;
 
-  var snakeBody: number[][] = []
+  const snakeBody: number[][] = [];
 
   // fruit
   let fruitX: number;
@@ -35,7 +34,12 @@ export function Snake() {
 
     placeFruit();
     document.addEventListener("keyup", event => changeDirection(event));
-    setInterval(update, 100);
+    const i = setInterval(update, 100);
+
+    return () => {
+      clearInterval(i);
+      document.removeEventListener("keyup", event => changeDirection(event));
+    };
   }, []);
 
   const update = () => {
@@ -56,7 +60,7 @@ export function Snake() {
 
     // move snake body
     for (let i = snakeBody.length - 1; i > 0; i--) {
-      snakeBody[i] = snakeBody[-1];
+      snakeBody[i] = snakeBody[i - 1];
     }
     if (snakeBody.length) {
       snakeBody[0] = [snakeX, snakeY];
@@ -72,15 +76,18 @@ export function Snake() {
     }
 
     // game over conditions
-    if (snakeX < 0 || snakeX > cols * blockSize || snakeY < 0 || snakeY > rows * blockSize) {
-      gameOver = true;
-      alert("Game Over");
+    if (
+      snakeX < 0 ||
+      snakeX > cols * blockSize ||
+      snakeY < 0 ||
+      snakeY > rows * blockSize
+    ) {
+      endGame();
     }
 
     for (let i = 0; snakeBody.length; i++) {
-      if (snakeX == snakeBody[i][0] && snakeY === snakeBody[i][1]) {
-        gameOver = true;
-        alert("Game Over");
+      if (snakeX === snakeBody[i][0] && snakeY === snakeBody[i][1]) {
+        endGame();
       }
     }
   };
@@ -106,12 +113,10 @@ export function Snake() {
     fruitY = Math.floor(Math.random() * rows) * blockSize;
   };
 
-  const onFlagIconClick = () => {
-    if (confirm("Surrender?")) {
-      gameOver = true;
-      alert("Game Over");
-      navigate(PageRoutes.snakeHome);
-    }
+  const endGame = () => {
+    setGameOver(true);
+    alert("Game Over 🐍");
+    navigate(PageRoutes.snakeHome);
   };
 
   return (
@@ -119,13 +124,9 @@ export function Snake() {
       <Header />
       <Main className="justify-center relative">
         <h2 className="text-2xl text-slate-50 mb-4">Snake</h2>
-        <p className="font-mono text-slate-100 text-lg absolute top-1 right-4">Score: {snakeBody?.length}</p>
-        <img
-          className="absolute top-10 right-4 cursor-pointer"
-          src={FlagIcon}
-          alt="surrender flag"
-          onClick={onFlagIconClick}
-        />
+
+        <SurrenderFlag onGameEnd={endGame} />
+
         <canvas
           className="shadow-lg shadow-slate-950"
           id="board-snake"
