@@ -6,6 +6,7 @@ import CoffeeIcon from "@/assets/icons/coffee.svg";
 import GithubIcon from "@/assets/icons/github.svg";
 import SunIcon from "@/assets/icons/sun.svg";
 import MoonIcon from "@/assets/icons/moon.svg";
+import SnakeIcon from "@/assets/images/snake-icon.png";
 
 export function Header() {
   const [theme, setTheme] = React.useState<"dark" | "light">("dark");
@@ -25,9 +26,9 @@ export function Header() {
       />
       <nav>
         <NavLink
-          title="Coffee"
-          href="#"
-          iconpath={CoffeeIcon}
+          title="Snake"
+          href="/snake/home"
+          iconpath={SnakeIcon}
           size={35}
           hover
         />
