@@ -1,7 +1,7 @@
 import { Header, GameCard, Main } from "@/components";
 import { PageRoutes } from "@/views";
-
 import SnakeBanner from "@/assets/images/snake-banner.png";
+import MineBanner from "@/assets/images/mine-banner.png";
 
 export function Home() {
   return (
@@ -17,8 +17,14 @@ export function Home() {
             description="The game it's about moving the snake in the direction of the fruits,
             and then catching them to grow bigger, but take care not to eat your own
             tail!"
-            path={PageRoutes.snakeHome}
+            path={PageRoutes.snake}
             image={SnakeBanner}
+          />
+          <GameCard
+            title="Mine Field"
+            description="Let's see how good you are at dodging mines, pick a grid that you are confident with, click on it, and hope it wasn't an explosive decision!"
+            path="#"
+            image={MineBanner}
           />
         </div>
       </Main>

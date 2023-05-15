@@ -1,12 +1,14 @@
 import React from "react";
 
 import { NavLink } from "@/components";
+import { PageRoutes } from "@/views";
 import SaveIcon from "@/assets/icons/save.svg";
 import CoffeeIcon from "@/assets/icons/coffee.svg";
 import GithubIcon from "@/assets/icons/github.svg";
 import SunIcon from "@/assets/icons/sun.svg";
 import MoonIcon from "@/assets/icons/moon.svg";
 import SnakeIcon from "@/assets/images/snake-icon.png";
+import MineIcon from "@/assets/images/mine-icon.png";
 
 export function Header() {
   const [theme, setTheme] = React.useState<"dark" | "light">("dark");
@@ -20,22 +22,22 @@ export function Header() {
     <header className="float-left fixed flex flex-col justify-between bg-gray-950 h-screen w-20">
       <NavLink
         className="bg-slate-800"
-        href="/"
+        href={PageRoutes.home}
         iconpath={SaveIcon}
         size={40}
       />
       <nav>
         <NavLink
           title="Snake"
-          href="/snake/home"
+          href={PageRoutes.snake}
           iconpath={SnakeIcon}
           size={35}
           hover
         />
         <NavLink
-          title="Coffee"
+          title="Mine"
           href="#"
-          iconpath={CoffeeIcon}
+          iconpath={MineIcon}
           size={35}
           hover
         />

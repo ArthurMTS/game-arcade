@@ -1,12 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-import { Header, Main, SurrenderFlag } from "@/components";
-import { PageRoutes } from "@/views";
+import {
+  GameControl,
+  GameControlsBox,
+  Header,
+  Home,
+  Main,
+  SurrenderFlag,
+} from "@/components";
+import ArrowUp from "@/assets/icons/arrow-up.svg";
+import ArrowDown from "@/assets/icons/arrow-down.svg";
+import ArrowRight from "@/assets/icons/arrow-right.svg";
+import ArrowLeft from "@/assets/icons/arrow-left.svg";
 
 export function Snake() {
   const [gameOver, setGameOver] = React.useState(false);
-  const navigate = useNavigate();
+  const [gameStart, setGameStart] = React.useState(false);
   const blockSize = 25;
   const rows = 20;
   const cols = 20;
@@ -27,6 +36,7 @@ export function Snake() {
   let fruitY: number;
 
   React.useEffect(() => {
+    if (!gameStart) return;
     board = document.getElementById("board-snake") as HTMLCanvasElement;
     board.height = rows * blockSize;
     board.width = cols * blockSize;
@@ -40,7 +50,7 @@ export function Snake() {
       clearInterval(i);
       document.removeEventListener("keyup", event => changeDirection(event));
     };
-  }, []);
+  }, [gameStart]);
 
   const update = () => {
     if (gameOver) return;
@@ -116,22 +126,44 @@ export function Snake() {
   const endGame = () => {
     setGameOver(true);
     alert("Game Over 🐍");
-    navigate(PageRoutes.snakeHome);
+    setGameStart(false);
   };
 
   return (
     <>
       <Header />
-      <Main className="justify-center relative">
-        <h2 className="text-2xl text-slate-50 mb-4">Snake</h2>
+      {gameStart ? (
+        <Main className="justify-center relative">
+          <h2 className="text-2xl text-slate-50 mb-4">Snake</h2>
 
-        <SurrenderFlag onGameEnd={endGame} />
+          <SurrenderFlag onGameEnd={endGame} />
 
-        <canvas
-          className="shadow-lg shadow-slate-950"
-          id="board-snake"
-        ></canvas>
-      </Main>
+          <canvas
+            className="shadow-lg shadow-slate-950"
+            id="board-snake"
+          ></canvas>
+        </Main>
+      ) : (
+        <Home
+          title="Snake Game"
+          description="The game consists of controlling the snake (the green dot) to capture
+        the fruit (the red dot) on the screen, but you have to be careful not to
+        hit the walls or eat your own tail, because otherwise the game is over."
+        >
+          <GameControlsBox tip="you cannot abruptly turn in the opposite direction to the one you are going">
+            <GameControl text="Move Up" icon={ArrowUp} />
+            <GameControl text="Move Right" icon={ArrowRight} />
+            <GameControl text="Move Down" icon={ArrowDown} />
+            <GameControl text="Move Left" icon={ArrowLeft} />
+          </GameControlsBox>
+          <button
+            className="bg-indigo-600 px-4 py-1 pb-2 text-slate-100 rounded-lg text-2xl transition-all hover:bg-indigo-700"
+            onClick={() => setGameStart(true)}
+          >
+            Start
+          </button>
+        </Home>
+      )}
     </>
   );
 }
