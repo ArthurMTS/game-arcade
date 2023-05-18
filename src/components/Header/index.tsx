@@ -42,8 +42,8 @@ export function Header() {
           hover
         />
         <NavLink
-          title="Coffee"
-          href="#"
+          title="Dummy"
+          href={PageRoutes.dummy}
           iconpath={CoffeeIcon}
           size={35}
           hover

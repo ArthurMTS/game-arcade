@@ -27,9 +27,9 @@ export function Home() {
             image={MineBanner}
           />
           <GameCard
-            title="Coffee"
+            title="Dummy"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium elementum ornare. Aenean consectetur, urna vitae consequat dapibus."
-            path="#"
+            path={PageRoutes.dummy}
             image={MineBanner}
           />
         </div>
