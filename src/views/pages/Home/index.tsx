@@ -21,8 +21,14 @@ export function Home() {
             image={SnakeBanner}
           />
           <GameCard
-            title="Mine Field"
+            title="Minesweeper"
             description="Let's see how good you are at dodging mines, pick a grid that you are confident with, click on it, and hope it wasn't an explosive decision!"
+            path={PageRoutes.mine}
+            image={MineBanner}
+          />
+          <GameCard
+            title="Coffee"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium elementum ornare. Aenean consectetur, urna vitae consequat dapibus."
             path="#"
             image={MineBanner}
           />

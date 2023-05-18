@@ -1,32 +1,39 @@
 import React from "react";
 
-interface GameControlsBoxProps {
+interface InfoBoxProps {
   children: React.ReactNode;
-  tip?: string;
+  className?: string;
+  title: string;
+  obs?: string;
 }
 
-interface GameControlProps {
-  icon: string;
+interface InfoItemProps {
+  className?: string;
+  icon?: string;
   text: string;
+  onClick?: (value: any) => void;
 }
 
-export function GameControl({ text, icon }: GameControlProps) {
+export function InfoItem({ className, text, icon, onClick }: InfoItemProps) {
   return (
-    <p className="flex gap-2 text-lg text-slate-100">
-      <img src={icon} alt="arrow up" />
+    <p
+      className={`flex gap-2 text-lg text-slate-100 ${className}`}
+      onClick={onClick}
+    >
+      {icon ? <img src={icon} alt={icon} /> : ""}
       {text}
     </p>
   );
 }
 
-export function GameControlsBox({ children, tip }: GameControlsBoxProps) {
+export function InfoBox({ title, children, obs, className }: InfoBoxProps) {
   return (
-    <div className="bg-slate-700 rounded-lg p-2 mb-4 w-40">
-      <span className="text-slate-400 font-mono">Controls</span>
+    <div className={`bg-slate-700 rounded-lg p-2 mb-4 w-40 ${className}`}>
+      <span className="text-slate-400 font-mono">{title}</span>
 
       {children}
 
-      {tip ? <span className="text-sm text-yellow-500">Tip: {tip}</span> : ""}
+      {obs ? <span className="text-sm text-yellow-500">{obs}</span> : ""}
     </div>
   );
 }

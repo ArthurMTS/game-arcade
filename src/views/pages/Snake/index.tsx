@@ -1,8 +1,8 @@
 import React from "react";
 
 import {
-  GameControl,
-  GameControlsBox,
+  InfoItem,
+  InfoBox,
   Header,
   Home,
   Main,
@@ -14,7 +14,6 @@ import ArrowRight from "@/assets/icons/arrow-right.svg";
 import ArrowLeft from "@/assets/icons/arrow-left.svg";
 
 export function Snake() {
-  const [gameOver, setGameOver] = React.useState(false);
   const [gameStart, setGameStart] = React.useState(false);
   const blockSize = 25;
   const rows = 20;
@@ -53,7 +52,6 @@ export function Snake() {
   }, [gameStart]);
 
   const update = () => {
-    if (gameOver) return;
     // board
     context.fillStyle = "rgb(2 6 23)";
     context.fillRect(0, 0, board.width, board.height);
@@ -124,7 +122,6 @@ export function Snake() {
   };
 
   const endGame = () => {
-    setGameOver(true);
     alert("Game Over 🐍");
     setGameStart(false);
   };
@@ -136,7 +133,7 @@ export function Snake() {
         <Main className="justify-center relative">
           <h2 className="text-2xl text-slate-50 mb-4">Snake</h2>
 
-          <SurrenderFlag onGameEnd={endGame} />
+          <SurrenderFlag onGameEnd={() => setGameStart(false)} />
 
           <canvas
             className="shadow-lg shadow-slate-950"
@@ -150,12 +147,12 @@ export function Snake() {
         the fruit (the red dot) on the screen, but you have to be careful not to
         hit the walls or eat your own tail, because otherwise the game is over."
         >
-          <GameControlsBox tip="you cannot abruptly turn in the opposite direction to the one you are going">
-            <GameControl text="Move Up" icon={ArrowUp} />
-            <GameControl text="Move Right" icon={ArrowRight} />
-            <GameControl text="Move Down" icon={ArrowDown} />
-            <GameControl text="Move Left" icon={ArrowLeft} />
-          </GameControlsBox>
+          <InfoBox title="Controls" obs="Tip: you cannot abruptly turn in the opposite direction to the one you are going">
+            <InfoItem text="Move Up" icon={ArrowUp} />
+            <InfoItem text="Move Right" icon={ArrowRight} />
+            <InfoItem text="Move Down" icon={ArrowDown} />
+            <InfoItem text="Move Left" icon={ArrowLeft} />
+          </InfoBox>
           <button
             className="bg-indigo-600 px-4 py-1 pb-2 text-slate-100 rounded-lg text-2xl transition-all hover:bg-indigo-700"
             onClick={() => setGameStart(true)}
