@@ -131,7 +131,7 @@ export function Snake() {
       <Header />
       {gameStart ? (
         <Main className="justify-center relative">
-          <h2 className="text-2xl text-slate-50 mb-4">Snake</h2>
+          <h2 className="text-2xl mb-4 text-slate-950 dark:text-slate-50">Snake</h2>
 
           <SurrenderFlag onGameEnd={() => setGameStart(false)} />
 

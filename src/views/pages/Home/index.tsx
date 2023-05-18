@@ -8,7 +8,7 @@ export function Home() {
     <>
       <Header />
       <Main>
-        <h1 className="mt-4 text-2xl font-mono text-slate-50">
+        <h1 className="mt-4 text-2xl font-mono text-slate-950 dark:text-slate-50">
           Choose a game and have fun!
         </h1>
         <div className="m-4 flex items-center justify-center flex-wrap gap-4">

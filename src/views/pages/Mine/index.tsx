@@ -108,7 +108,7 @@ function Cell({ row, col, cell, onClick }: CellProps) {
       }`}
       onClick={onCellClick}
     >
-      {cell.value === -1 ? "💣" : ""}
+      {cell.clicked && cell.value === -1 ? "💣" : ""}
       {cell.clicked && cell.value !== -1 && cell.value !== 0 ? cell.value : ""}
     </div>
   );
@@ -223,7 +223,7 @@ export function Mine() {
       <Header />
       {gameStart ? (
         <Main className="justify-center">
-          <h2 className="text-2xl text-slate-50 mb-4">Minesweeper</h2>
+          <h2 className="text-2xl mb-4 text-slate-950 dark:text-slate-50">Minesweeper</h2>
 
           <SurrenderFlag onGameEnd={() => setGameStart(false)} />
 
