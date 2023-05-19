@@ -24,9 +24,9 @@ export function Header() {
       />
       <nav>
         <NavLink
-          title="Snake"
-          href={PageRoutes.snake}
-          iconpath={SnakeIcon}
+          title="Dummy"
+          href={PageRoutes.dummy}
+          iconpath={CoffeeIcon}
           size={35}
           hover
         />
@@ -38,9 +38,9 @@ export function Header() {
           hover
         />
         <NavLink
-          title="Dummy"
-          href={PageRoutes.dummy}
-          iconpath={CoffeeIcon}
+          title="Snake"
+          href={PageRoutes.snake}
+          iconpath={SnakeIcon}
           size={35}
           hover
         />

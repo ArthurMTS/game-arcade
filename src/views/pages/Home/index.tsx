@@ -13,12 +13,10 @@ export function Home() {
         </h1>
         <div className="m-4 flex items-center justify-center flex-wrap gap-4">
           <GameCard
-            title="Snake"
-            description="The game it's about moving the snake in the direction of the fruits,
-            and then catching them to grow bigger, but take care not to eat your own
-            tail!"
-            path={PageRoutes.snake}
-            image={SnakeBanner}
+            title="Dummy"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium elementum ornare. Aenean consectetur, urna vitae consequat dapibus."
+            path={PageRoutes.dummy}
+            image={MineBanner}
           />
           <GameCard
             title="Minesweeper"
@@ -27,10 +25,12 @@ export function Home() {
             image={MineBanner}
           />
           <GameCard
-            title="Dummy"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium elementum ornare. Aenean consectetur, urna vitae consequat dapibus."
-            path={PageRoutes.dummy}
-            image={MineBanner}
+            title="Snake"
+            description="The game it's about moving the snake in the direction of the fruits,
+            and then catching them to grow bigger, but take care not to eat your own
+            tail!"
+            path={PageRoutes.snake}
+            image={SnakeBanner}
           />
         </div>
       </Main>
