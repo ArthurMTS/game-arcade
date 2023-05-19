@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   InfoItem,
@@ -122,13 +124,14 @@ export function Snake() {
   };
 
   const endGame = () => {
-    alert("Game Over 🐍");
+    toast("Game Over 🐍");
     setGameStart(false);
   };
 
   return (
     <>
       <Header />
+      <ToastContainer />
       {gameStart ? (
         <Main className="justify-center relative">
           <h2 className="text-2xl mb-4 text-slate-950 dark:text-slate-50">Snake</h2>

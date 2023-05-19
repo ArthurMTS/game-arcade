@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   Header,
@@ -189,10 +191,9 @@ export function Mine() {
       }
     }
     if (openCells >= max) {
-      alert("Congratulations, you won! 🎉");
+      toast("Congratulations, you won! 🎉");
       setGameStart(false);
     }
-    console.log(openCells, max);
   };
 
   const openMultipleCells = (
@@ -214,13 +215,14 @@ export function Mine() {
   };
 
   const endGame = () => {
-    alert("Game Over 💣");
+    toast("Game Over 💣");
     setGameStart(false);
   };
 
   return (
     <>
       <Header />
+      <ToastContainer />
       {gameStart ? (
         <Main className="justify-center">
           <h2 className="text-2xl mb-4 text-slate-950 dark:text-slate-50">Minesweeper</h2>
